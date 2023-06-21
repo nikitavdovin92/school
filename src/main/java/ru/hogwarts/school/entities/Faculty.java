@@ -1,5 +1,4 @@
 package ru.hogwarts.school.entities;
-
 public class Faculty {
     private long id;
     private String name;

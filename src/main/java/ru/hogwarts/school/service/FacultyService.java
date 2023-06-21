@@ -1,5 +1,4 @@
 package ru.hogwarts.school.service;
-
 import ru.hogwarts.school.entities.Faculty;
 
 public interface FacultyService {

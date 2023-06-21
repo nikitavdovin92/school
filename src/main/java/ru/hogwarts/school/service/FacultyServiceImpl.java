@@ -1,7 +1,5 @@
 package ru.hogwarts.school.service;
-
 import ru.hogwarts.school.entities.Faculty;
-
 import java.util.HashMap;
 
 public class FacultyServiceImpl implements FacultyService{
