@@ -1,5 +1,4 @@
 package ru.hogwarts.school.entities;
-
 import java.util.Objects;
 
 public class Student {
