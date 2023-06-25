@@ -1,9 +1,8 @@
 package ru.hogwarts.school.controller;
 import org.springframework.web.bind.annotation.*;
-import ru.hogwarts.school.entities.Faculty;
-import ru.hogwarts.school.entities.Student;
+import ru.hogwarts.school.dto.FacultyDtoIn;
+import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.service.FacultyService;
-import ru.hogwarts.school.service.StudentService;
 
 import java.util.List;
 
@@ -18,27 +17,27 @@ public class FacultyController {
     }
 
     @PostMapping
-    public Faculty create(@RequestBody Faculty faculty) {
-        return facultyService.create(faculty);
+    public FacultyDtoOut create(@RequestBody FacultyDtoIn facultyDtoIn) {
+        return facultyService.create(facultyDtoIn);
     }
 
     @PutMapping("/{id}")
-    public Faculty update(@PathVariable("id") long id, @RequestBody Faculty faculty) {
-        return facultyService.update(id, faculty);
+    public FacultyDtoOut update(@PathVariable("id") long id, @RequestBody FacultyDtoIn facultyDtoIn) {
+        return facultyService.update(id, facultyDtoIn);
     }
 
     @GetMapping
-    public Faculty get(@PathVariable("id") long id) {
+    public FacultyDtoOut get(@PathVariable("id") long id) {
         return facultyService.get(id);
     }
 
     @DeleteMapping
-    public Faculty delete(@PathVariable("id") long id) {
+    public FacultyDtoOut delete(@PathVariable("id") long id) {
         return facultyService.delete(id);
     }
 
     @GetMapping
-    public List<Faculty> findAll(@RequestParam(required = false) String color) {
+    public List<FacultyDtoOut> findAll(@RequestParam(required = false) String color) {
         return facultyService.findAll(color);
     }
 }
