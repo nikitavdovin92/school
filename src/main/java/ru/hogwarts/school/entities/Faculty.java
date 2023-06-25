@@ -1,6 +1,5 @@
 package ru.hogwarts.school.entities;
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "faculties")
 public class Faculty {

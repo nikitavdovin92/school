@@ -3,7 +3,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.dto.StudentDtoIn;
 import ru.hogwarts.school.dto.StudentDtoOut;
 import ru.hogwarts.school.service.StudentService;
-
 import java.util.List;
 
 

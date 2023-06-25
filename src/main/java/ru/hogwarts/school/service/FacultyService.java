@@ -1,6 +1,4 @@
 package ru.hogwarts.school.service;
-
-
 import org.springframework.lang.Nullable;
 import ru.hogwarts.school.dto.FacultyDtoIn;
 import ru.hogwarts.school.dto.FacultyDtoOut;
@@ -8,7 +6,6 @@ import ru.hogwarts.school.entities.Faculty;
 import ru.hogwarts.school.exception.FacultyNotFoundException;
 import ru.hogwarts.school.mapper.FacultyMapper;
 import ru.hogwarts.school.repository.FacultyRepository;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

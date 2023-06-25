@@ -5,7 +5,6 @@ import ru.hogwarts.school.dto.FacultyDtoIn;
 import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.entities.Faculty;
 
-
 @Component
 public class FacultyMapper {
     public FacultyDtoOut toDto(Faculty faculty) {
