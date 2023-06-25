@@ -1,10 +1,17 @@
 package ru.hogwarts.school.entities;
+
 public class Faculty {
     private long id;
     private String name;
     private String color;
 
-    public Faculty(){
+    public Faculty() {
+    }
+
+    public Faculty(long id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
     }
 
     public long getId() {
@@ -31,9 +38,5 @@ public class Faculty {
         this.color = color;
     }
 
-    public Faculty(long id, String name, String color) {
-        this.id = id;
-        this.name = name;
-        this.color = color;
-    }
+
 }
