@@ -1,22 +1,17 @@
-package ru.hogwarts.school.entities;
-import jakarta.persistence.*;
-@Entity
-@Table(name = "faculties")
-public class Faculty {
+package ru.hogwarts.school.dto;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FacultyDtoOut {
     private long id;
     private String name;
     private String color;
 
-    public Faculty() {
-    }
-
-    public Faculty(long id, String name, String color) {
+    public FacultyDtoOut(long id, String name, String color) {
         this.id = id;
         this.name = name;
         this.color = color;
+    }
+
+    public FacultyDtoOut() {
     }
 
     public long getId() {
@@ -42,6 +37,4 @@ public class Faculty {
     public void setColor(String color) {
         this.color = color;
     }
-
-
 }
