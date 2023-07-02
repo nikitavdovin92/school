@@ -1,8 +1,10 @@
 package ru.hogwarts.school.service;
 import org.springframework.lang.Nullable;
+import org.springframework.web.multipart.MultipartFile;
 import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.dto.StudentDtoIn;
 import ru.hogwarts.school.dto.StudentDtoOut;
+import ru.hogwarts.school.entities.Avatar;
 import ru.hogwarts.school.entities.Student;
 import ru.hogwarts.school.exception.FacultyNotFoundException;
 import ru.hogwarts.school.exception.StudentNotFoundException;
@@ -23,11 +25,14 @@ public class StudentService {
 
         private final FacultyMapper facultyMapper;
 
-    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper, FacultyRepository facultyRepository, FacultyMapper facultyMapper) {
+        private final AvatarService avatarService;
+
+    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper, FacultyRepository facultyRepository, FacultyMapper facultyMapper, AvatarService avatarService) {
         this.studentRepository = studentRepository;
         this.studentMapper = studentMapper;
         this.facultyRepository = facultyRepository;
         this.facultyMapper = facultyMapper;
+        this.avatarService = avatarService;
     }
     public StudentDtoOut create(StudentDtoIn studentDtoIn) {
         return studentMapper.toDto(studentRepository.save(studentMapper.toEntity(studentDtoIn)));
@@ -77,5 +82,15 @@ public class StudentService {
                 .map(Student::getFaculty)
                 .map(facultyMapper::toDto)
                 .orElseThrow(()-> new StudentNotFoundException(id));
+    }
+
+    public StudentDtoOut uploadAvatar(long id, MultipartFile multipartFile) {
+        Student student = studentRepository.findById(id)
+                        .orElseThrow(()-> new StudentNotFoundException(id));
+        Avatar avatar = avatarService.create(student,multipartFile);
+        StudentDtoOut studentDtoOut = studentMapper.toDto(student);
+        studentDtoOut.setAvatarUrl("/avatars/"+ avatar.getId()+ "/from-db");
+        return studentDtoOut;
+
     }
 }
