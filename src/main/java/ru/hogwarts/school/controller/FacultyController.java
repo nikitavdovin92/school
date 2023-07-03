@@ -4,11 +4,13 @@ import ru.hogwarts.school.dto.FacultyDtoIn;
 import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.dto.StudentDtoOut;
 import ru.hogwarts.school.service.FacultyService;
+
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/faculties")
+
 public class FacultyController {
     private final FacultyService facultyService;
 
@@ -50,6 +52,8 @@ public class FacultyController {
     public List<StudentDtoOut> findStudents(@PathVariable ("id") long id) {
         return facultyService.findstudents(id);
     }
+
+
 
 
 }

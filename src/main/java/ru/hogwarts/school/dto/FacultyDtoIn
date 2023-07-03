@@ -1,6 +1,6 @@
 package ru.hogwarts.school.dto;
 
-public class FacultyDtoIn {
+public class StudentDtoIn {
     private String name;
     private String color;
 

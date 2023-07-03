@@ -89,7 +89,7 @@ public class StudentService {
                         .orElseThrow(()-> new StudentNotFoundException(id));
         Avatar avatar = avatarService.create(student,multipartFile);
         StudentDtoOut studentDtoOut = studentMapper.toDto(student);
-        studentDtoOut.setAvatarUrl("/avatars/"+ avatar.getId()+ "/from-db");
+        studentDtoOut.setAvatarUrl("http://localhost:8080/avatars/"+ avatar.getId()+ "/from-db");
         return studentDtoOut;
 
     }
