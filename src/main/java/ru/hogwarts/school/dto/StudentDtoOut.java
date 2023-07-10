@@ -1,19 +1,13 @@
-package ru.hogwarts.school.entities;
-import jakarta.persistence.*;
+package ru.hogwarts.school.dto;
 
-@Entity
-@Table(name = "students")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class StudentDtoOut {
     private long id;
     private String name;
     private int age;
-    private int avatar;
+    private FacultyDtoOut faculty;
 
-    @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    private AvatarDto avatar;
 
     public long getId() {
         return id;
@@ -39,19 +33,19 @@ public class Student {
         this.age = age;
     }
 
-    public Faculty getFaculty() {
+    public FacultyDtoOut getFaculty() {
         return faculty;
     }
 
-    public void setFaculty(Faculty faculty) {
+    public void setFaculty(FacultyDtoOut faculty) {
         this.faculty = faculty;
     }
 
-    public int getAvatar() {
+    public AvatarDto getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(AvatarDto avatar) {
         this.avatar = avatar;
     }
 }
