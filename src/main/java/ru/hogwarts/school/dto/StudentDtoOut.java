@@ -7,24 +7,7 @@ public class StudentDtoOut {
     private int age;
     private FacultyDtoOut faculty;
 
-    private String avatarUrl;
-
-    public StudentDtoOut() {
-    }
-
-    public StudentDtoOut(long id, String name, int age,
-                         Long facultyId,
-                         String facultyName,
-                         String facultyColor,
-                         Long avatarId) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        if (facultyId != null && facultyName != null && facultyColor != null) {
-            this.faculty = new FacultyDtoOut(facultyId, facultyName, facultyColor);
-        }
-        setAvatarUrl(avatarId);
-    }
+    private AvatarDto avatar;
 
     public long getId() {
         return id;
@@ -58,13 +41,11 @@ public class StudentDtoOut {
         this.faculty = faculty;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+    public AvatarDto getAvatar() {
+        return avatar;
     }
 
-    public void setAvatarUrl(Long avatarId) {
-        if (avatarId != null) {
-            this.avatarUrl = "http://localhost:8080/avatars/"+ avatarId + "/from-db";
-        }
+    public void setAvatar(AvatarDto avatar) {
+        this.avatar = avatar;
     }
 }

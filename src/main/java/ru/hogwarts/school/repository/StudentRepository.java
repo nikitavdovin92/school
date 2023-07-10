@@ -14,13 +14,13 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAllByFaculty_Id(long facultyId);
 
 
-    @Query("SELECT count(s) from Student s")
+    @Query("SELECT count(s) FROM Student s")
     int getCountOfStudents();
 
-    @Query("SELECT avg (s.age) from Student s")
+    @Query("SELECT avg (s.age) FROM Student s")
     double getAverageAge();
 
-    @Query("SELECT new ru.hogwarts.school.dto.StudentDtoOut(s.id, s.name, s.age, f.id, f.name, f.color, a.id) from Student s left join Faculty f on s.faculty = f left join  Avatar a on a.student = s order by s.id desc ")
+    @Query(" SELECT s FROM Student s ORDER BY s.id DESC ")
     List<StudentDtoOut> getLastStudents(Pageable pageable);
 
 }

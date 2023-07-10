@@ -9,6 +9,7 @@ public class Student {
     private long id;
     private String name;
     private int age;
+    private int avatar;
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
@@ -44,5 +45,13 @@ public class Student {
 
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
+    }
+
+    public int getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 }

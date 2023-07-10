@@ -4,11 +4,11 @@ package ru.hogwarts.school.controller;
 import org.springframework.data.util.Pair;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.dto.AvatarDto;
 import ru.hogwarts.school.service.AvatarService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/avatars")
@@ -28,6 +28,12 @@ public class AvatarController {
     @GetMapping("/{id}/from-fs")
     public ResponseEntity<byte[]> getFromFs(@PathVariable long id) {
         return build(avatarService.getFromFs(id));
+    }
+
+    @GetMapping
+    public List<AvatarDto> getPage(@RequestParam(value ="page", required = false, defaultValue = "0") int page,
+                                   @RequestParam(value ="sizw", required = false, defaultValue = "10") int size) {
+        return avatarService.getPage(Math.abs(page), Math.abs(size));
     }
 
     private ResponseEntity<byte[]> build (Pair<byte[] , String > pair) {

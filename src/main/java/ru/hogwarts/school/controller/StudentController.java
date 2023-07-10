@@ -68,7 +68,7 @@ public class StudentController {
     }
 
     @GetMapping("/getLastStudents")
-    public List<StudentDtoOut> getLastStudents(@RequestParam(value = "count", defaultValue = "5") int count) {
+    public List<StudentDtoOut> getLastStudents(@RequestParam(value = "count", defaultValue = "5", required = false) int count) {
         return studentService.getLastStudents(Math.abs(count));
     }
 }
