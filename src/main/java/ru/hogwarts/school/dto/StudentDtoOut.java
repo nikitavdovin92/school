@@ -1,4 +1,6 @@
 package ru.hogwarts.school.dto;
+
+
 public class StudentDtoOut {
     private long id;
     private String name;
@@ -6,6 +8,23 @@ public class StudentDtoOut {
     private FacultyDtoOut faculty;
 
     private String avatarUrl;
+
+    public StudentDtoOut() {
+    }
+
+    public StudentDtoOut(long id, String name, int age,
+                         Long facultyId,
+                         String facultyName,
+                         String facultyColor,
+                         Long avatarId) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        if (facultyId != null && facultyName != null && facultyColor != null) {
+            this.faculty = new FacultyDtoOut(facultyId, facultyName, facultyColor);
+        }
+        setAvatarUrl(avatarId);
+    }
 
     public long getId() {
         return id;
@@ -43,7 +62,9 @@ public class StudentDtoOut {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setAvatarUrl(Long avatarId) {
+        if (avatarId != null) {
+            this.avatarUrl = "http://localhost:8080/avatars/"+ avatarId + "/from-db";
+        }
     }
 }

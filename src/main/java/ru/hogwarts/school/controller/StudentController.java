@@ -57,7 +57,18 @@ public class StudentController {
         return studentService.uploadAvatar(id, multipartFile);
     }
 
+    @GetMapping("/count")
+    public int getCountOfStudents() {
+        return studentService.getCountOfStudents();
+    }
 
+    @GetMapping("/averageAge")
+    public double getAverageAge() {
+        return studentService.getAverageAge();
+    }
 
-
+    @GetMapping("/getLastStudents")
+    public List<StudentDtoOut> getLastStudents(@RequestParam(value = "count", defaultValue = "5") int count) {
+        return studentService.getLastStudents(Math.abs(count));
+    }
 }

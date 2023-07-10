@@ -60,7 +60,7 @@ public class FacultyControllerTest {
 
     @Test
     public void createTest() throws Exception {
-        Faculty facultyDtoIn = generateDto();
+        FacultyDtoIn facultyDtoIn = generateDto();
         Faculty faculty = new Faculty();
         faculty.setId(1L);
         faculty.setName(facultyDtoIn.getName());

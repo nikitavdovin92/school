@@ -1,4 +1,5 @@
 package ru.hogwarts.school.service;
+import org.springframework.data.domain.Pageable;
 import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 import ru.hogwarts.school.dto.FacultyDtoOut;
@@ -12,6 +13,7 @@ import ru.hogwarts.school.mapper.FacultyMapper;
 import ru.hogwarts.school.mapper.StudentMapper;
 import ru.hogwarts.school.repository.FacultyRepository;
 import ru.hogwarts.school.repository.StudentRepository;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -89,8 +91,22 @@ public class StudentService {
                         .orElseThrow(()-> new StudentNotFoundException(id));
         Avatar avatar = avatarService.create(student,multipartFile);
         StudentDtoOut studentDtoOut = studentMapper.toDto(student);
-        studentDtoOut.setAvatarUrl("http://localhost:8080/avatars/"+ avatar.getId()+ "/from-db");
+        studentDtoOut.setAvatarUrl(avatar.getId());
         return studentDtoOut;
 
     }
+
+    public int getCountOfStudents() {
+        return studentRepository.getCountOfStudents();
+    }
+
+    public double getAverageAge() {
+        return studentRepository.getAverageAge();
+    }
+
+    public List<StudentDtoOut> getLastStudents(int count) {
+        return studentRepository.getLastStudents((java.awt.print.Pageable) Pageable.ofSize(count));
+    }
+
+
 }

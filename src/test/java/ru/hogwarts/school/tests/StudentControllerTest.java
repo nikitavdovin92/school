@@ -66,8 +66,9 @@ public class StudentControllerTest {
         studentDtoIn.setName(faker.name().fullName());
         studentDtoIn.setAge(created.getAge());
         created.setName(faker.name().fullName());
+
         ResponseEntity<StudentDtoOut> responseEntity = testRestTemplate.exchange
-                ("http://localhost:" + port + "/students/"+ created.getId(),
+                ("http://localhost:" + port + "/students/" + created.getId(),
                         HttpMethod.PUT, new HttpEntity<>(studentDtoIn), StudentDtoOut.class);
 
         Assertions.assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -78,15 +79,16 @@ public class StudentControllerTest {
         Assertions.assertThat(studentDtoOut.getId()).isEqualTo(created.getId());
         Assertions.assertThat(studentDtoOut.getAge()).isEqualTo(studentDtoIn.getAge());
         Assertions.assertThat(studentDtoOut.getName()).isEqualTo(studentDtoIn.getName());
-        return studentDtoOut;
 
-        long incorrectId = created.getId() +1;
+
+        long incorrectId = created.getId() + 1;
         ResponseEntity<String> stringResponseEntity = testRestTemplate.exchange(
                 "http://localhost"+ port + "/students/"+ incorrectId, HttpMethod.PUT,
                         new HttpEntity<>(studentDtoIn), String.class);
         Assertions.assertThat(stringResponseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         Assertions.assertThat(stringResponseEntity.getBody())
                 .isEqualTo("Студент с ID =" +incorrectId+ "не найден!");
+        return studentDtoOut;
 
     }
 
