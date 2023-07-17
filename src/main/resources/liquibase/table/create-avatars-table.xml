@@ -9,10 +9,10 @@
     <changeSet id="create-avatars-table.1" author="Nikita Vdovin">
         <preConditions>
             <not>
-                <tableExists tableName="faculties"/>
+                <tableExists tableName="avatars"/>
             </not>
         </preConditions>
-        <createTable tableName="faculties">
+        <createTable tableName="avatars">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>

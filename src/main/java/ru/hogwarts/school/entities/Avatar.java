@@ -3,6 +3,7 @@ package ru.hogwarts.school.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table (name = "avatars")
 
 
 public class Avatar {
