@@ -5,6 +5,7 @@
 --rollback DROP INDEX IDX_students_name
 CREATE INDEX IDX_students_name ON students(name);
 
+
 --changeset nikitavdovin92:2
 --precondition-sql-check expectedResult:0 select count(*) from pg_catalog.pg_tables t inner join pg_indexes i on i.tablename = t.tablename where t.tablename = 'faculties' and i.indexname = 'IDX_faculties_name_color';
 --rollback DROP INDEX IDX_faculties_name_color
