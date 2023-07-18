@@ -22,11 +22,11 @@
             <column name="age" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="faculty_Id" type="BIGINT">
+            <column name="faculty_id" type="BIGINT">
                 <constraints nullable="true"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseTableName="students" baseColumnNames="faculty_Id" constraintName="FK_STUDENTS_FACULTY_ID"
+        <addForeignKeyConstraint baseTableName="students" baseColumnNames="faculty_id" constraintName="FK_STUDENTS_FACULTY_ID"
                                  referencedTableName="faculties"
                                  referencedColumnNames="id"/>
     </changeSet>

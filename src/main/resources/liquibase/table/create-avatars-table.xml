@@ -28,11 +28,11 @@
             <column name="data" type="OID">
                 <constraints nullable="false"/>
             </column>
-            <column name="student_Id" type="BIGINT">
+            <column name="student_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseTableName="avatars" baseColumnNames="student_Id" constraintName="FK_AVATARS_STUDENT_ID"
+        <addForeignKeyConstraint baseTableName="avatars" baseColumnNames="student_id" constraintName="FK_AVATARS_STUDENT_ID"
                                  referencedTableName="students"
                                  referencedColumnNames="id"/>
     </changeSet>

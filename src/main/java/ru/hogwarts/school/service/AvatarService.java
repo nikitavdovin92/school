@@ -1,6 +1,4 @@
 package ru.hogwarts.school.service;
-
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.util.Pair;
@@ -14,7 +12,6 @@ import ru.hogwarts.school.exception.AvatarNotFoundException;
 import ru.hogwarts.school.exception.AvatarProcessingException;
 import ru.hogwarts.school.mapper.AvatarMapper;
 import ru.hogwarts.school.repository.AvatarRepository;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
