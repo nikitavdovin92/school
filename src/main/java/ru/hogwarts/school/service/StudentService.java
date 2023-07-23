@@ -125,5 +125,20 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getNameStartWithA() {
+        return studentRepository.findAll().stream()
+                .map(student -> student.getName().toUpperCase())
+                .filter(name-> name.startsWith("A"))
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public double getAvgAge() {
+        return studentRepository.findAll().stream()
+                .mapToDouble(student -> student.getAge())
+                .average()
+                .getAsDouble();
+    }
+
 
 }

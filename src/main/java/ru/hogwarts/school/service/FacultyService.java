@@ -1,4 +1,5 @@
 package ru.hogwarts.school.service;
+import org.apache.commons.logging.Log;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import ru.hogwarts.school.dto.FacultyDtoIn;
@@ -14,6 +15,7 @@ import ru.hogwarts.school.repository.StudentRepository;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FacultyService {
     private static final Logger LOG = (Logger) LoggerFactory.getLogger(FacultyService.class);
@@ -86,5 +88,35 @@ public class FacultyService {
         return studentRepository.findAllByFaculty_Id(id).stream()
                 .map(studentMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public String getLongestName() {
+        return facultyRepository.findAll().stream()
+                .map(faculty -> faculty.getName())
+                .max(Comparator.comparing(name-> name.length()))
+                .get();
+    }
+
+    public Integer sum() {
+        long start = System.currentTimeMillis();
+        int res =  Stream.iterate(1, a-> a+1)
+                .limit(1_000_000)
+                .reduce(0, (a,b)-> a + b);
+        long finish = System.currentTimeMillis();
+        long dif = finish - start;
+        LOG.info("simple"+ dif);
+        return res;
+    }
+
+    public Integer sumImpr() {
+        long start = System.currentTimeMillis();
+        int res =  Stream.iterate(1, a-> a+1)
+                .limit(1_000_000)
+                .parallel()
+                .reduce(0, (a,b)-> a + b);
+        long finish = System.currentTimeMillis();
+        long dif = finish - start;
+        LOG.info("impr:"+ dif);
+        return res;
     }
 }
